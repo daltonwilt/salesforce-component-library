@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <isExposed>false</isExposed>
+    <description>
+      Multi-select picker. Picks are made from a lightning-combobox and shown as removable
+      lightning-pills; takes and gives back an array or a semicolon-separated picklist value.
+      Used inside other components.
+    </description>
+</LightningComponentBundle>
