@@ -1,8 +1,9 @@
 {
-  "name": "salesforce-app",
+  "name": "salesforce-component-library",
   "private": true,
   "version": "1.0.0",
-  "description": "Salesforce App",
+  "description": "Reusable Lightning Web Components for Salesforce",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**/*.js",
     "test": "npm run test:unit",
