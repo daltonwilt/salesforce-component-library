@@ -1,0 +1,59 @@
+<template>
+  <div class="slds-form-element">
+    <!-- The label is drawn here and the combobox's own is hidden, so the required marker
+         reflects the selection rather than the always-empty combobox. -->
+    <template lwc:if={showLabel}>
+      <span class="slds-form-element__label">
+        <template lwc:if={required}>
+          <abbr class="slds-required" title="required">*</abbr>
+        </template>
+        {label}
+      </span>
+      <template lwc:if={hasHelp}>
+        <lightning-helptext
+          class="slds-form-element__icon"
+          content={fieldLevelHelp}
+        ></lightning-helptext>
+      </template>
+    </template>
+
+    <lightning-combobox
+      label={label}
+      name={name}
+      variant="label-hidden"
+      placeholder={comboboxPlaceholder}
+      options={availableOptions}
+      value=""
+      disabled={comboboxDisabled}
+      dropdown-alignment="auto"
+      onchange={handleAdd}
+      onblur={handleBlur}
+    ></lightning-combobox>
+
+    <template lwc:if={hasSelection}>
+      <ul
+        class="slds-listbox slds-listbox_horizontal slds-var-p-top_xx-small"
+        aria-label={label}
+      >
+        <template for:each={selectedOptions} for:item="option">
+          <li key={option.key} class="slds-listbox-item">
+            <template lwc:if={showRemovablePills}>
+              <lightning-pill
+                label={option.label}
+                name={option.value}
+                onremove={handleRemove}
+              ></lightning-pill>
+            </template>
+            <template lwc:else>
+              <span class="slds-pill">
+                <span class="slds-pill__label" title={option.label}
+                  >{option.label}</span
+                >
+              </span>
+            </template>
+          </li>
+        </template>
+      </ul>
+    </template>
+  </div>
+</template>
