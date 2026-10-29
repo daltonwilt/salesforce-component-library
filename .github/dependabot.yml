@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    ignore:
+      # Salesforce's ESLint configs (via @babel/eslint-parser) don't support ESLint 10 yet
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
     groups:
       dev-dependencies:
         dependency-type: development
