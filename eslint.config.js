@@ -9,10 +9,7 @@ module.exports = defineConfig([
   // Aura configuration
   {
     files: ["**/aura/**/*.js"],
-    extends: [
-      ...auraConfig.configs.recommended, 
-      ...auraConfig.configs.locker
-    ]
+    extends: [...auraConfig.configs.recommended, ...auraConfig.configs.locker]
   },
 
   // LWC configuration
@@ -58,7 +55,7 @@ module.exports = defineConfig([
   {
     files: ["force-app/**/{aura,lwc}/**/*.js"],
     rules: {
-      "guard-for-in": "off"        // Wants for...in loops wrapped in a hasOwnProperty check
+      "guard-for-in": "off" // Wants for...in loops wrapped in a hasOwnProperty check
     }
   },
 
@@ -72,7 +69,7 @@ module.exports = defineConfig([
       ecmaVersion: 2021
     },
     rules: {
-      "no-console": "warn"          // console.log left in shipped code (could have data leaks)
+      "no-console": "warn" // console.log left in shipped code (could have data leaks)
     }
   }
 ]);

@@ -35,13 +35,13 @@ sf org open
 
 ## Project Structure
 
-| Path                                  | Contents                                |
-| ------------------------------------- | --------------------------------------- |
-| `force-app/main/default/lwc/`         | Lightning Web Components                |
-| `force-app/main/default/classes/`     | Apex classes                            |
-| `config/project-scratch-def.json`     | Scratch org definition                  |
-| `manifest/package.xml`                | Metadata manifest                       |
-| `scripts/`                            | Sample Apex and SOQL scripts            |
+| Path                              | Contents                     |
+| --------------------------------- | ---------------------------- |
+| `force-app/main/default/lwc/`     | Lightning Web Components     |
+| `force-app/main/default/classes/` | Apex classes                 |
+| `config/project-scratch-def.json` | Scratch org definition       |
+| `manifest/package.xml`            | Metadata manifest            |
+| `scripts/`                        | Sample Apex and SOQL scripts |
 
 ## Development
 
