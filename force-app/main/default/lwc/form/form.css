@@ -1,0 +1,50 @@
+/* Styling hooks. Set any of these on c-form (or an ancestor) to restyle the form; each one
+   falls back to the matching SLDS design token, then to a literal for contexts without SLDS.
+
+   --c-form-font-family          --lwc-fontFamily (always forced — see below)
+   --c-form-font-size            --lwc-fontSize5
+   --c-form-section-spacing      --lwc-spacingSmall
+   --c-form-field-spacing        --lwc-spacingSmall
+   --c-form-title-letter-spacing 0.0625em
+   --c-form-hint-font-size       --lwc-fontSize4
+   --c-form-hint-color           --lwc-colorTextWeak */
+
+:host {
+  font-size: var(--c-form-font-size, var(--lwc-fontSize5, 1rem));
+  /* Comboboxes render as SLDS buttons and carry their own sans face, while <input> and
+     <textarea> can fall through to a portal theme's serif — leaving one form in two fonts.
+     Not chained to the inherited --lwc-fontFamily: that is the portal's serif we are replacing. */
+  --lwc-fontFamily: var(
+    --c-form-font-family,
+    "Salesforce Sans",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
+}
+
+:host,
+lightning-input-field,
+lightning-record-edit-form {
+  font-family: var(--lwc-fontFamily);
+}
+
+.section + .section {
+  margin-top: var(--c-form-section-spacing, var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem)));
+}
+
+.group-title {
+  text-transform: uppercase;
+  letter-spacing: var(--c-form-title-letter-spacing, 0.0625em);
+}
+
+.hint {
+  font-size: var(--c-form-hint-font-size, var(--lwc-fontSize4, 0.875rem));
+  color: var(--c-form-hint-color, var(--lwc-colorTextWeak, #666));
+}
+
+/* Stacked labels wrap far less than the horizontal variant, but long ones still need room. */
+.field {
+  margin-bottom: var(--c-form-field-spacing, var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem)));
+}
