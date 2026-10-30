@@ -1,7 +1,13 @@
 <template>
   <template for:each={formInstances} for:item="instance">
-    <lightning-record-edit-form key={instance.key} object-api-name={objectApiName} record-id={instance.recordId}
-      onsubmit={handleSubmit} onsuccess={handleSuccess} onerror={handleError}>
+    <lightning-record-edit-form
+      key={instance.key}
+      object-api-name={objectApiName}
+      record-id={instance.recordId}
+      onsubmit={handleSubmit}
+      onsuccess={handleSuccess}
+      onerror={handleError}
+    >
       <template lwc:if={showMessages}>
         <lightning-messages></lightning-messages>
       </template>
@@ -9,7 +15,11 @@
       <template for:each={renderSections} for:item="section">
         <div key={section.key} class="section">
           <template lwc:if={section.title}>
-            <p class="slds-var-m-bottom_x-small slds-color__text_gray-10 slds-text-title_bold group-title">{section.title}</p>
+            <p
+              class="slds-var-m-bottom_x-small slds-text-title_bold group-title"
+            >
+              {section.title}
+            </p>
           </template>
           <template lwc:if={section.hint}>
             <p class="slds-var-m-bottom_x-small hint">{section.hint}</p>
@@ -17,8 +27,12 @@
           <div class="slds-grid slds-wrap slds-gutters_small">
             <template for:each={section.fields} for:item="field">
               <div key={field.key} class={field.cssClass}>
-                <lightning-input-field field-name={field.apiName} variant={field.variant} required={field.required}
-                  disabled={field.disabled}></lightning-input-field>
+                <lightning-input-field
+                  field-name={field.apiName}
+                  variant={field.variant}
+                  required={field.required}
+                  disabled={field.disabled}
+                ></lightning-input-field>
               </div>
             </template>
           </div>
@@ -27,10 +41,18 @@
 
       <template lwc:if={showButtons}>
         <div class="slds-var-m-top_medium">
-          <lightning-button variant={submitVariant} label={submitLabel} class="slds-var-m-right_x-small"
-            onclick={handleSaveClick}></lightning-button>
+          <lightning-button
+            variant={submitVariant}
+            label={submitLabel}
+            class="slds-var-m-right_x-small"
+            onclick={handleSaveClick}
+          ></lightning-button>
           <template lwc:if={hasCancel}>
-            <lightning-button variant="neutral" label={cancelLabel} onclick={handleCancel}></lightning-button>
+            <lightning-button
+              variant="neutral"
+              label={cancelLabel}
+              onclick={handleCancel}
+            ></lightning-button>
           </template>
         </div>
       </template>

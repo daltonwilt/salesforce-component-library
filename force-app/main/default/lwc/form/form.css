@@ -5,6 +5,7 @@
    --c-form-font-size            --lwc-fontSize5
    --c-form-section-spacing      --lwc-varSpacingVerticalSmall, then --lwc-spacingSmall
    --c-form-field-spacing        --lwc-varSpacingVerticalSmall, then --lwc-spacingSmall
+   --c-form-title-color          --lwc-colorTextDefault
    --c-form-title-letter-spacing 0.0625em
    --c-form-hint-font-size       --lwc-fontSize4
    --c-form-hint-color           --lwc-colorTextWeak */
@@ -31,10 +32,14 @@ lightning-record-edit-form {
 }
 
 .section + .section {
-  margin-top: var(--c-form-section-spacing, var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem)));
+  margin-top: var(
+    --c-form-section-spacing,
+    var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem))
+  );
 }
 
 .group-title {
+  color: var(--c-form-title-color, var(--lwc-colorTextDefault, #080707));
   text-transform: uppercase;
   letter-spacing: var(--c-form-title-letter-spacing, 0.0625em);
 }
@@ -46,5 +51,8 @@ lightning-record-edit-form {
 
 /* Stacked labels wrap far less than the horizontal variant, but long ones still need room. */
 .field {
-  margin-bottom: var(--c-form-field-spacing, var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem)));
+  margin-bottom: var(
+    --c-form-field-spacing,
+    var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem))
+  );
 }
