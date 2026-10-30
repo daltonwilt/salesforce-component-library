@@ -1,0 +1,55 @@
+/* Styling hooks. Set any of these on c-thumbnail (or an ancestor, such as the datatable) to
+   restyle it; each one falls back to the matching SLDS design token, then to a literal.
+
+   --c-thumbnail-size          3.5rem
+   --c-thumbnail-border-color  --lwc-colorBorder
+   --c-thumbnail-background    --lwc-colorBackground
+   --c-thumbnail-focus-color   --lwc-colorBorderInputActive */
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.thumbCell {
+  display: inline-flex;
+  width: var(--c-thumbnail-size, 3.5rem);
+  height: var(--c-thumbnail-size, 3.5rem);
+  border: 1px solid
+    var(--c-thumbnail-border-color, var(--lwc-colorBorder, #d8dde6));
+  border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
+  background: var(
+    --c-thumbnail-background,
+    var(--lwc-colorBackground, #f3f3f3)
+  );
+  cursor: pointer;
+  transition:
+    box-shadow 0.1s ease-in-out,
+    border-color 0.1s ease-in-out;
+}
+
+.thumbCell:hover,
+.thumbCell:focus {
+  border-color: var(
+    --c-thumbnail-focus-color,
+    var(--lwc-colorBorderInputActive, #1589ee)
+  );
+  box-shadow: 0 0 0 1px
+    var(--c-thumbnail-focus-color, var(--lwc-colorBorderInputActive, #1589ee));
+  outline: 2px solid transparent;
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumbCell {
+    transition: none;
+  }
+}
