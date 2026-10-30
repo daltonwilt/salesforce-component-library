@@ -113,7 +113,7 @@ export function toastError(
  * prefers the relay and falls back to a plain toast when there is none, so the same component works
  * opened as a modal or dropped straight on a page.
  *
- *   // opener:  SF428RequestModal.open({ ..., notifyOpener: toastRelay(this) })
+ *   // opener:  Modal.open({ ..., notifyOpener: toastRelay(this) })
  *   // modal:   @api notifyOpener;  ...  notify(this, "Saved", "Item added.", "success")
  *
  * @param {object} cmp        the component — usually `this`
@@ -321,7 +321,7 @@ export function debug(source, ...args) {
 /**
  * A debug() bound to one source, so a component names itself once:
  *
- *   const log = debugFor("slfrfSF428RequestModal");
+ *   const log = debugFor("modal");
  *   log("submitting", this.recordId);
  *
  * @param {string} source
