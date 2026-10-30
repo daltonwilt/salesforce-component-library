@@ -1,0 +1,28 @@
+<template>
+  <div
+    class="slds-scrollable_none slds-media_center slds-grid_align-center thumbCell"
+    role="button"
+    tabindex="0"
+    title={title}
+    onclick={handleClick}
+    onkeydown={handleKeydown}
+  >
+    <template lwc:if={hasRenderableThumbnail}>
+      <img
+        class="slds-media_responsive thumbImage"
+        src={thumbnailUrl}
+        alt={altText}
+        loading="lazy"
+        onerror={handleImageError}
+      />
+    </template>
+    <template lwc:else>
+      <lightning-icon
+        icon-name={iconName}
+        size="medium"
+        alternative-text={altText}
+      >
+      </lightning-icon>
+    </template>
+  </div>
+</template>

@@ -1,0 +1,16 @@
+<template>
+  <span
+    class="slds-media_responsive tooltipCell"
+    onmouseenter={handleMouseEnter}
+    onmouseleave={handleMouseLeave}
+  >
+    <span class="slds-large-show_inline-block slds-truncate tooltipText"
+      >{value}</span
+    >
+    <template lwc:if={showTooltip}>
+      <span class="slds-is-fixed slds-text-body_regular tooltipBubble"
+        >{value}</span
+      >
+    </template>
+  </span>
+</template>

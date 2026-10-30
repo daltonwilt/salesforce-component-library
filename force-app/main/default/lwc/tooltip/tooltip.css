@@ -1,0 +1,37 @@
+/* Styling hooks. Set any of these on c-tooltip (or an ancestor, such as the datatable) to restyle
+   it; each one falls back to the matching SLDS design token, then to a literal.
+
+   --c-tooltip-background    --lwc-colorBackgroundAltInverse
+   --c-tooltip-color         --lwc-colorTextInverse
+   --c-tooltip-max-width     25rem
+   --c-tooltip-z-index       9999 (above an SLDS modal, which sits at 9000) */
+
+.tooltipCell {
+  padding: var(--lwc-varSpacingXxSmall, var(--lwc-spacingXxSmall, 0.25rem))
+    var(--lwc-varSpacingXSmall, var(--lwc-spacingXSmall, 0.5rem));
+  cursor: help;
+}
+
+.tooltipText {
+  text-decoration: underline dotted;
+  vertical-align: bottom;
+}
+.tooltipBubble {
+  z-index: var(--c-tooltip-z-index, 9999);
+  /* Shrink to fit short values instead of always drawing a 25rem box. */
+  width: max-content;
+  max-width: min(var(--c-tooltip-max-width, var(--lwc-sizeLarge, 25rem)), 90vw);
+  padding: var(--lwc-varSpacingXSmall, var(--lwc-spacingXSmall, 0.5rem))
+    var(--lwc-varSpacingSmall, var(--lwc-spacingSmall, 0.75rem));
+  border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
+  background-color: var(
+    --c-tooltip-background,
+    var(--lwc-colorBackgroundAltInverse, #0b1f33)
+  );
+  color: var(--c-tooltip-color, var(--lwc-colorTextInverse, #ffffff));
+  line-height: 1.25rem;
+  white-space: normal;
+  overflow-wrap: break-word;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
