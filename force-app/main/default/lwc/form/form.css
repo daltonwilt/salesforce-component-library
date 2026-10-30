@@ -3,8 +3,8 @@
 
    --c-form-font-family          --lwc-fontFamily (always forced — see below)
    --c-form-font-size            --lwc-fontSize5
-   --c-form-section-spacing      --lwc-spacingSmall
-   --c-form-field-spacing        --lwc-spacingSmall
+   --c-form-section-spacing      --lwc-varSpacingVerticalSmall, then --lwc-spacingSmall
+   --c-form-field-spacing        --lwc-varSpacingVerticalSmall, then --lwc-spacingSmall
    --c-form-title-letter-spacing 0.0625em
    --c-form-hint-font-size       --lwc-fontSize4
    --c-form-hint-color           --lwc-colorTextWeak */
