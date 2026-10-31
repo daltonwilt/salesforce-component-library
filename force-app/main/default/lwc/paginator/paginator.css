@@ -1,0 +1,12 @@
+.paginator-page-input {
+  width: 4.5rem;
+}
+
+.paginator-size {
+  width: 7rem;
+}
+
+.paginator-divider {
+  height: var(--lwc-spacingLarge, 1.5rem);
+  margin: 0 var(--lwc-spacingSmall, 0.75rem);
+}
