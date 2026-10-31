@@ -1,0 +1,80 @@
+<template>
+  <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-wrap slds-var-p-vertical_xx-small">
+
+    <!-- Left: where you are, and how much you see -->
+    <div class="slds-col slds-no-flex slds-grid slds-grid_vertical-align-center">
+      <template if:true={showPageJump}>
+        <span class="slds-text-body_small slds-var-m-right_x-small">Page</span>
+        <div class="paginator-page-input">
+          <lightning-input type="number" label="Page number" variant="label-hidden" min="1" max={totalPages}
+            value={currentPage} disabled={disabled} onkeyup={handlePageInput}
+            onblur={handlePageInput}></lightning-input>
+        </div>
+        <span class="slds-text-body_small slds-var-m-left_x-small">{pageCountLabel}</span>
+      </template>
+
+      <template if:true={showPageSize}>
+        <span class="slds-large-show_inline-block slds-border_left paginator-divider" aria-hidden="true"></span>
+        <span class="slds-text-body_small slds-var-m-right_x-small">Rows per page</span>
+        <div class="paginator-size">
+          <lightning-combobox label="Rows per page" variant="label-hidden" options={sizeOptions} value={pageSizeValue}
+            disabled={disabled} dropdown-alignment="auto" onchange={handlePageSizeChange}></lightning-combobox>
+        </div>
+      </template>
+    </div>
+
+    <!-- Right: the numbers. slds-no-flex keeps this column the width of its buttons, so
+         slds-grid_align-spread can push it hard against the right edge. -->
+    <div class="slds-col slds-no-flex slds-grid slds-grid_vertical-align-center">
+      <lightning-button-group>
+        <lightning-button-icon 
+          icon-name="utility:jump_to_left" 
+          alternative-text="First page" 
+          title="First page"
+          disabled={previousDisabled} 
+          onclick={handleFirst}
+        ></lightning-button-icon>
+        <lightning-button-icon 
+          icon-name="utility:chevronleft" 
+          alternative-text="Previous page" 
+          title="Previous page"
+          disabled={previousDisabled} 
+          onclick={handlePrevious}
+        ></lightning-button-icon>
+      </lightning-button-group>
+
+      <template if:true={showPageJump}>
+        <div class="slds-grid slds-grid_vertical-align-center slds-var-m-horizontal_xx-small">
+          <template for:each={pageItems} for:item="item">
+            <template if:true={item.isGap}>
+              <span key={item.key} class="slds-text-body_small slds-var-m-horizontal_xx-small"
+                aria-hidden="true">&hellip;</span>
+            </template>
+            <template if:false={item.isGap}>
+              <lightning-button key={item.key} label={item.label} variant={item.variant} data-page={item.page}
+                aria-current={item.ariaCurrent} disabled={disabled} onclick={handlePageClick}
+                class="slds-var-m-horizontal_xxx-small"></lightning-button>
+            </template>
+          </template>
+        </div>
+      </template>
+
+      <lightning-button-group>
+        <lightning-button-icon
+          icon-name="utility:chevronright"
+          alternative-text="Next page"
+          title="Next page"
+          disabled={nextDisabled}
+          onclick={handleNext}
+        ></lightning-button-icon>
+        <lightning-button-icon
+          icon-name="utility:jump_to_right"
+          alternative-text="Last page"
+          title="Last page"
+          disabled={nextDisabled}
+          onclick={handleLast}
+        ></lightning-button-icon>
+      </lightning-button-group>
+    </div>
+  </div>
+</template>

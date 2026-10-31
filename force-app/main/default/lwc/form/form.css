@@ -1,21 +1,5 @@
-/* Styling hooks. Set any of these on c-form (or an ancestor) to restyle the form; each one
-   falls back to the matching SLDS design token, then to a literal for contexts without SLDS.
-   Font sizes skip the token: every --lwc-fontSize* is INTERNAL and fails to compile in namespace c.
-
-   --c-form-font-family          --lwc-fontFamily (always forced — see below)
-   --c-form-font-size            1rem
-   --c-form-section-spacing      --lwc-varSpacingVerticalSmall, then --lwc-spacingSmall
-   --c-form-field-spacing        --lwc-varSpacingVerticalSmall, then --lwc-spacingSmall
-   --c-form-title-color          --lwc-colorTextDefault
-   --c-form-title-letter-spacing 0.0625em
-   --c-form-hint-font-size       0.875rem
-   --c-form-hint-color           --lwc-colorTextWeak */
-
 :host {
-  font-size: var(--c-form-font-size, 1rem);
-  /* Comboboxes render as SLDS buttons and carry their own sans face, while <input> and
-     <textarea> can fall through to a portal theme's serif — leaving one form in two fonts.
-     Not chained to the inherited --lwc-fontFamily: that is the portal's serif we are replacing. */
+  font-size: 1rem;
   --lwc-fontFamily: var(
     --c-form-font-family,
     "Salesforce Sans",
@@ -33,27 +17,21 @@ lightning-record-edit-form {
 }
 
 .section + .section {
-  margin-top: var(
-    --c-form-section-spacing,
-    var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem))
-  );
+  margin-top: var(--lwc-spacingSmall, 0.75rem);
 }
 
 .group-title {
-  color: var(--c-form-title-color, var(--lwc-colorTextDefault, #080707));
+  color: var(--lwc-colorTextDefault, #080707);
   text-transform: uppercase;
-  letter-spacing: var(--c-form-title-letter-spacing, 0.0625em);
+  letter-spacing: 0.0625em;
 }
 
 .hint {
-  font-size: var(--c-form-hint-font-size, 0.875rem);
-  color: var(--c-form-hint-color, var(--lwc-colorTextWeak, #666));
+  font-size: 0.875rem;
+  color: var(--lwc-colorTextWeak, #666);
 }
 
 /* Stacked labels wrap far less than the horizontal variant, but long ones still need room. */
 .field {
-  margin-bottom: var(
-    --c-form-field-spacing,
-    var(--lwc-varSpacingVerticalSmall, var(--lwc-spacingSmall, 0.75rem))
-  );
+  margin-bottom: var(--lwc-spacingSmall, 0.75rem);
 }

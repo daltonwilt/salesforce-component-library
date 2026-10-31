@@ -7,8 +7,7 @@
    --c-tooltip-z-index       9999 (above an SLDS modal, which sits at 9000) */
 
 .tooltipCell {
-  padding: var(--lwc-varSpacingXxSmall, var(--lwc-spacingXxSmall, 0.25rem))
-    var(--lwc-varSpacingXSmall, var(--lwc-spacingXSmall, 0.5rem));
+  padding: 0.25rem 0.5rem;
   cursor: help;
 }
 
@@ -17,18 +16,14 @@
   vertical-align: bottom;
 }
 .tooltipBubble {
-  z-index: var(--c-tooltip-z-index, 9999);
+  z-index: 9999;
   /* Shrink to fit short values instead of always drawing a 25rem box. */
   width: max-content;
-  max-width: min(var(--c-tooltip-max-width, var(--lwc-sizeLarge, 25rem)), 90vw);
-  padding: var(--lwc-varSpacingXSmall, var(--lwc-spacingXSmall, 0.5rem))
-    var(--lwc-varSpacingSmall, var(--lwc-spacingSmall, 0.75rem));
+  max-width: min(var(--lwc-sizeLarge, 25rem), 90vw);
+  padding: 0.5rem 0.75rem;
   border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
-  background-color: var(
-    --c-tooltip-background,
-    var(--lwc-colorBackgroundAltInverse, #0b1f33)
-  );
-  color: var(--c-tooltip-color, var(--lwc-colorTextInverse, #ffffff));
+  background-color: var(--lwc-colorBackgroundAltInverse, #0b1f33);
+  color: var(--lwc-colorTextInverse, #ffffff);
   line-height: 1.25rem;
   white-space: normal;
   overflow-wrap: break-word;
