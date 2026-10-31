@@ -1,11 +1,3 @@
-/* Styling hooks. Set any of these on c-tooltip (or an ancestor, such as the datatable) to restyle
-   it; each one falls back to the matching SLDS design token, then to a literal.
-
-   --c-tooltip-background    --lwc-colorBackgroundAltInverse
-   --c-tooltip-color         --lwc-colorTextInverse
-   --c-tooltip-max-width     25rem
-   --c-tooltip-z-index       9999 (above an SLDS modal, which sits at 9000) */
-
 .tooltipCell {
   padding: 0.25rem 0.5rem;
   cursor: help;
