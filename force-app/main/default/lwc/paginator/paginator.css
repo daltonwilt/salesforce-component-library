@@ -7,6 +7,6 @@
 }
 
 .paginator-divider {
-  height: var(--lwc-spacingLarge, 1.5rem);
-  margin: 0 var(--lwc-spacingSmall, 0.75rem);
+  height: var(--slds-g-spacing-5, 1.5rem);
+  margin: 0 var(--slds-g-spacing-3, 0.75rem);
 }

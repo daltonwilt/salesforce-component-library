@@ -1,0 +1,63 @@
+<template>
+  <div class="file-loader">
+    <template lwc:if={label}>
+      <p class="file-label">{label}</p>
+    </template>
+
+    <!-- Category picker, only when the caller named a prefix group -->
+    <template lwc:if={hasPrefixOptions}>
+      <div class="slds-var-m-bottom_x-small file-prefix">
+        <lightning-combobox label="File type" placeholder="Select a file type..." value={selectedPrefix}
+          options={prefixOptions} onchange={handlePrefixChange} disabled={disabled} required></lightning-combobox>
+      </div>
+    </template>
+
+    <lightning-input type="file" label="Upload files" variant="label-hidden" multiple={allowMultiple}
+      accept={acceptedFormats} disabled={inputDisabled} onchange={handleFilesChange}></lightning-input>
+
+    <template lwc:if={busy}>
+      <div class="slds-var-m-top_x-small slds-text-body_small slds-text-color_weak">
+        Working…
+      </div>
+    </template>
+
+    <!-- Picked but not yet uploaded: the record they belong to does not exist yet -->
+    <template lwc:if={hasStaged}>
+      <p class="file-pending-note slds-var-m-top_x-small">{stagedNote}</p>
+      <ul class="slds-p-around_none slds-m-around_none file-list">
+        <template for:each={staged} for:item="item">
+          <li key={item.name} class="slds-media_center slds-grid file-row">
+            <lightning-icon icon-name="utility:page" size="x-small" class="slds-var-m-right_x-small"></lightning-icon>
+            <span class="slds-col file-name">{item.name}</span>
+            <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Remove" title="Remove"
+              data-name={item.name} onclick={handleRemoveStaged} disabled={disabled}></lightning-button-icon>
+          </li>
+        </template>
+      </ul>
+    </template>
+
+    <!-- Already attached -->
+    <template lwc:if={hasFiles}>
+      <ul class="slds-p-around_none slds-m-around_none file-list slds-var-m-top_x-small">
+        <template for:each={files} for:item="file">
+          <li key={file.contentDocumentId} class="slds-media_center slds-grid file-row">
+            <lightning-icon icon-name="doctype:attachment" size="x-small"
+              class="slds-var-m-right_x-small"></lightning-icon>
+            <a class="slds-col file-name" href={file.downloadUrl} target="_blank" rel="noopener">{file.title}</a>
+            <lightning-button-icon icon-name="utility:delete" variant="bare" alternative-text="Remove file"
+              title="Remove file" data-id={file.contentDocumentId} onclick={handleRemoveFile}
+              disabled={disabled}></lightning-button-icon>
+          </li>
+        </template>
+      </ul>
+    </template>
+
+    <template lwc:if={isEmpty}>
+      <p class="file-empty slds-var-m-top_x-small">No files attached.</p>
+    </template>
+
+    <template lwc:if={status}>
+      <p class={statusClass} role="status">{status.message}</p>
+    </template>
+  </div>
+</template>

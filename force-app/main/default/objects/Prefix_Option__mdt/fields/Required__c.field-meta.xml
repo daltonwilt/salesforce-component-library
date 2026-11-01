@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When checked, the c-file-loader host should require at least one file uploaded for this prefix before the form can be submitted.</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Check to require at least one file for this prefix before submission.</inlineHelpText>
+    <label>Required</label>
+    <type>Checkbox</type>
+</CustomField>
