@@ -1,0 +1,58 @@
+/* SLDS 2 global styling hooks, each falling back to the value it replaces for orgs without them. */
+
+:host {
+  font-size: var(--slds-g-font-scale-2, 1rem);
+  --slds-g-font-family-base:
+    "Salesforce Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.file-label {
+  font-size: var(--slds-g-font-scale-1, 0.875rem);
+  font-weight: var(--slds-g-font-weight-7, 700);
+  text-transform: uppercase;
+  letter-spacing: 0.0625em;
+  color: var(--slds-g-color-on-surface-2, #514f4d);
+  margin-bottom: var(--slds-g-spacing-2, 0.5rem);
+}
+
+/* The prefix picker reads as one field among the form's, not a full-width control. */
+.file-prefix {
+  max-width: 24rem;
+}
+
+.file-list {
+  list-style: none;
+}
+
+.file-row {
+  gap: var(--slds-g-spacing-1, 0.25rem);
+  padding: var(--slds-g-spacing-1, 0.25rem) 0;
+  border-bottom: var(--slds-g-sizing-border-1, 1px) solid
+    var(--slds-g-color-neutral-base-95, #f3f3f3);
+}
+
+.file-row:last-child {
+  border-bottom: none;
+}
+
+.file-name {
+  overflow-wrap: anywhere;
+}
+
+.file-empty,
+.file-pending-note {
+  font-size: var(--slds-g-font-scale-1, 0.875rem);
+  color: var(--slds-g-color-on-surface-1, #666);
+}
+
+.file-status {
+  font-size: var(--slds-g-font-scale-1, 0.875rem);
+}
+
+.file-status_success {
+  color: var(--slds-g-color-success-1, #1b5e2c);
+}
+
+.file-status_error {
+  color: var(--slds-g-color-error-1, #8c0c15);
+}

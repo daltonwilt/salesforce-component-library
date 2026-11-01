@@ -1,36 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>FileController</members>
+        <members>FileControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexComponent</name>
+        <members>ContentVersion.Prefix__c</members>
+        <members>Prefix_Group__mdt.Program__c</members>
+        <members>Prefix_Option__mdt.Prefix_Group__c</members>
+        <members>Prefix_Option__mdt.Prefix_Value__c</members>
+        <members>Prefix_Option__mdt.Required__c</members>
+        <members>Prefix_Option__mdt.Sort_Order__c</members>
+        <members>Prefix_Option__mdt.Visibility__c</members>
+        <name>CustomField</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexPage</name>
+        <members>Prefix_Group__mdt</members>
+        <members>Prefix_Option__mdt</members>
+        <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexTestSuite</name>
+        <members>Prefix_Group__mdt-Prefix Group Layout</members>
+        <members>Prefix_Option__mdt-Prefix Option Layout</members>
+        <name>Layout</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>*</members>
+        <members>datatable</members>
+        <members>fileLoader</members>
+        <members>form</members>
+        <members>multiSelect</members>
+        <members>paginator</members>
+        <members>thumbnail</members>
+        <members>tooltip</members>
+        <members>utils</members>
         <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
     </types>
     <version>68.0</version>
 </Package>
