@@ -10,26 +10,26 @@
   display: inline-flex;
   width: 3.5rem;
   height: 3.5rem;
-  border: 1px solid
-    var(--lwc-colorBorder, #d8dde6);
-  border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
-  background: var(--lwc-colorBackground, #f3f3f3);
+  border: var(--slds-g-sizing-border-1, 1px) solid
+    var(--slds-g-color-neutral-base-90, #d8dde6);
+  border-radius: var(--slds-g-radius-border-2, 0.25rem);
+  background: var(--slds-g-color-surface-container-2, #f3f3f3);
   cursor: pointer;
   transition:
-    box-shadow 0.1s ease-in-out,
-    border-color 0.1s ease-in-out;
+    box-shadow var(--slds-g-duration-quickly, 0.1s) ease-in-out,
+    border-color var(--slds-g-duration-quickly, 0.1s) ease-in-out;
 }
 
 .thumbCell:hover,
 .thumbCell:focus {
-  border-color: var(--lwc-colorBorderInputActive, #1589ee);
-  box-shadow: 0 0 0 1px
-    var(--lwc-colorBorderInputActive, #1589ee);
+  border-color: var(--slds-g-color-info-base-60, #1589ee);
+  box-shadow: 0 0 0 var(--slds-g-sizing-border-1, 1px)
+    var(--slds-g-color-info-base-60, #1589ee);
   outline: 2px solid transparent;
 }
 
 .thumbImage {
-  width: 100%;
+  
   height: 100%;
   object-fit: cover;
 }

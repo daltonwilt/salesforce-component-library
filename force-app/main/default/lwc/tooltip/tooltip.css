@@ -1,5 +1,5 @@
 .tooltipCell {
-  padding: 0.25rem 0.5rem;
+  padding: var(--slds-g-spacing-1, 0.25rem) var(--slds-g-spacing-2, 0.5rem);
   cursor: help;
 }
 
@@ -11,11 +11,11 @@
   z-index: 9999;
   /* Shrink to fit short values instead of always drawing a 25rem box. */
   width: max-content;
-  max-width: min(var(--lwc-sizeLarge, 25rem), 90vw);
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
-  background-color: var(--lwc-colorBackgroundAltInverse, #0b1f33);
-  color: var(--lwc-colorTextInverse, #ffffff);
+  max-width: min(25rem, 90vw);
+  padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+  border-radius: var(--slds-g-radius-border-2, 0.25rem);
+  background-color: var(--slds-g-color-surface-container-inverse-1, #0b1f33);
+  color: var(--slds-g-color-on-surface-inverse-1, #ffffff);
   line-height: 1.25rem;
   white-space: normal;
   overflow-wrap: break-word;

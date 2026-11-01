@@ -7,7 +7,7 @@ import { fire } from "c/utils";
  * Renders a lightning-record-edit-form, its fields and its button row from a layout config, so
  * callers describe a form instead of writing one:
  *
- *   <c-g_-form
+ *   <c-form
  *     object-api-name="Account"
  *     record-id={recordId}
  *     sections={sections}
@@ -16,7 +16,7 @@ import { fire } from "c/utils";
  *     cancel-label="Cancel"
  *     onsaved={handleSaved}
  *     oncancelled={handleCancelled}>
- *   </c-g_-form>
+ *   </c-form>
  *
  * The component owns the whole form rather than just the fields because lightning-input-field
  * registers with its form through the DOM tree — it cannot be rendered from a nested component
@@ -28,7 +28,7 @@ import { fire } from "c/utils";
  *   variant: any lightning-input-field variant (default 'label-stacked')
  * Pass `fields` instead of `sections` for a single unlabelled group.
  *
- * Styling: --c-form-* custom properties, listed at the top of form.css.
+ * Styling: set --c-form-font-family to change the font; the rest follows SLDS 2 styling hooks.
  *
  * Events: saved (detail: {id, apiName, fields}), cancelled, formerror (detail: the form error).
  * A caller listening for formerror should pass hide-messages, so one failure is not reported three
