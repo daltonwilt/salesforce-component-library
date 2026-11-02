@@ -43,6 +43,16 @@ sf org open
 | `manifest/package.xml`            | Metadata manifest            |
 | `scripts/`                        | Sample Apex and SOQL scripts |
 
+## Component Library
+
+`componentLibrary` is a reference page for every component in this repo, laid out like the Salesforce component reference: a live **Example**, the **Documentation**, and the full **Specification** (attributes, methods, events). Add it to a Lightning App Page, or create a Lightning Component Tab for it in Setup. Links keep the selection in the URL (`c__component`, `c__tab`).
+
+To document a new component:
+
+1. Build a runnable demo as its own bundle, `example<Component>`, and add a branch for it in `componentLibraryExample`.
+2. Write `componentLibrary/doc<Component>.js` and list it in `componentLibrary/registry.js`.
+3. Run `npm run snippets` so the Example tab shows the demo's source. The Jest suite fails if this is forgotten.
+
 ## Development
 
 | Command                      | Description                              |
@@ -51,6 +61,7 @@ sf org open
 | `npm test`                   | Run LWC Jest unit tests                  |
 | `npm run test:unit:watch`    | Run Jest tests in watch mode             |
 | `npm run test:unit:coverage` | Run Jest tests with a coverage report    |
+| `npm run snippets`           | Regenerate the component library's example code |
 
 A pre-commit hook (Husky + lint-staged) lints and tests staged LWC files automatically.
 

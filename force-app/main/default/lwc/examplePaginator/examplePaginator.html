@@ -1,0 +1,12 @@
+<template>
+  <p class="slds-var-m-bottom_small slds-text-body_regular">{rangeLabel}</p>
+
+  <c-paginator
+    page-number={pageNumber}
+    total-rows={totalRows}
+    page-size={pageSize}
+    page-size-options="10,25,50"
+    onpagechange={handlePageChange}
+    onpagesizechange={handlePageSizeChange}
+  ></c-paginator>
+</template>

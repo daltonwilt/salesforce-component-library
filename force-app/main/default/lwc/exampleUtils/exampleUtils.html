@@ -1,0 +1,23 @@
+<template>
+  <div class="slds-var-m-bottom_medium">
+    <lightning-button
+      label="Success toast"
+      class="slds-var-m-right_x-small"
+      onclick={handleSuccess}
+    ></lightning-button>
+    <lightning-button
+      label="Error toast from an Apex error"
+      onclick={handleError}
+    ></lightning-button>
+  </div>
+
+  <lightning-input
+    type="search"
+    label="Debounced search"
+    field-level-help="The search runs once you stop typing for 400 ms."
+    onchange={handleSearchInput}
+  ></lightning-input>
+  <p class="slds-var-m-top_x-small slds-text-body_small">
+    Searches run: {searchCount}. Last term: <code>{lastTerm}</code>
+  </p>
+</template>
