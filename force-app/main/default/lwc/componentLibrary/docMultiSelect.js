@@ -3,13 +3,14 @@ export default {
   label: "Multi-Select",
   category: "input",
   description:
-    "Pick several values from a list. Each choice shows as a removable pill under the picker.",
+    "Pick several values from a dropdown that stays open while you check them. Each choice also shows as a removable pill under the picker.",
   example: "exampleMultiSelect",
   documentation: [
     {
       heading: "Overview",
       body: [
-        "`c-multi-select` is a `lightning-combobox` to pick from and a `lightning-pill` for each choice to remove it again. An option disappears from the list once it is picked, so a value cannot be chosen twice.",
+        "`c-multi-select` is a dropdown of checkable options and a `lightning-pill` for each choice to remove it again. Clicking an option checks it, clicking it again unchecks it, and the list stays open the whole time, so several values can be picked in one go.",
+        "The field shows the placeholder when nothing is picked, the option's label for one pick, and \"N options selected\" for more. The list closes on a click outside the field, on Tab, or on Escape.",
         "Options take the same `[{ label, value }]` shape `lightning-combobox` does. Values are compared as strings, so numeric values are converted on the way in."
       ]
     },
@@ -31,7 +32,7 @@ export default {
     {
       heading: "Validation",
       body: [
-        "`required` is enforced by the component rather than passed to the combobox, which is emptied after every pick and would otherwise always report the field as missing.",
+        "`required` needs at least one selection. The error message is drawn under the field, which is outlined in red until a value is picked.",
         "As with native inputs, the error appears only once the field has been left. Call `reportValidity()` before a save to show it straight away:",
         {
           code: 'const picker = this.template.querySelector("c-multi-select");\nif (!picker.reportValidity()) {\n  return;\n}'
@@ -47,6 +48,8 @@ export default {
     {
       heading: "Accessibility",
       body: [
+        "The field is a read-only input with `role=\"combobox\"` controlling a listbox marked `aria-multiselectable`, and each option reports its state through `aria-selected`. Focus stays on the input while the list is open; the highlighted option is tracked with `aria-activedescendant`.",
+        "Keyboard: ArrowDown and ArrowUp open the list and move through it, wrapping at either end. Home and End jump to the first and last option. Enter and Space open the list or toggle the highlighted option. Escape closes the list without closing an enclosing modal.",
         "The pills sit in a horizontal listbox labelled with the field's label. With `variant=\"label-hidden\"` the label is hidden visually but still announced by screen readers."
       ]
     }
@@ -69,14 +72,13 @@ export default {
     {
       name: "name",
       type: "string",
-      description: "Passed through to the inner combobox."
+      description: "Set as the name of the inner input."
     },
     {
       name: "placeholder",
       type: "string",
       default: '"Select an option…"',
-      description:
-        'Shown in the picker. Replaced with "All options selected" once every option is picked.'
+      description: "Shown in the field while nothing is selected."
     },
     {
       name: "field-level-help",
@@ -99,7 +101,8 @@ export default {
       name: "disabled",
       type: "boolean",
       default: "false",
-      description: "Disables the picker and shows the pills without remove buttons."
+      description:
+        "Disables the picker and shows the pills without remove buttons. The picker is also disabled when there are no options."
     },
     {
       name: "variant",
@@ -120,6 +123,11 @@ export default {
       returns: "boolean",
       description:
         "Checks validity, then shows or clears the error on the field."
+    },
+    {
+      name: "focus()",
+      returns: "void",
+      description: "Moves focus to the field."
     }
   ],
   events: [
@@ -127,7 +135,7 @@ export default {
       name: "change",
       detail: "{ value: string[], valueString: string }",
       description:
-        "A value was added or removed. valueString is the semicolon-joined form a multi-select picklist saves. Does not bubble."
+        "A value was checked, unchecked or removed with its pill. Fires on every change, while the list is still open. valueString is the semicolon-joined form a multi-select picklist saves. Does not bubble."
     }
   ]
 };
