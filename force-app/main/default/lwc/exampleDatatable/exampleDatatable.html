@@ -1,0 +1,17 @@
+<template>
+  <div class="table">
+    <c-datatable
+      key-field="id"
+      data={rows}
+      columns={columns}
+      hide-checkbox-column
+      onpreviewfile={handlePreview}
+    ></c-datatable>
+  </div>
+
+  <template lwc:if={previewed}>
+    <p class="slds-var-m-top_small slds-text-body_small">
+      Preview requested for <strong>{previewed}</strong>
+    </p>
+  </template>
+</template>

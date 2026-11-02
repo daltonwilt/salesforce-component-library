@@ -1,0 +1,16 @@
+<template>
+  <c-form
+    object-api-name="Account"
+    sections={sections}
+    submit-label="Save"
+    cancel-label="Reset"
+    onsaved={handleSaved}
+    oncancelled={handleReset}
+  ></c-form>
+
+  <template lwc:if={savedId}>
+    <p class="slds-var-m-top_small slds-text-body_small">
+      Created Account <code>{savedId}</code>
+    </p>
+  </template>
+</template>
