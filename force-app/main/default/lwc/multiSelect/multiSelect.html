@@ -1,39 +1,112 @@
 <template>
-  <div class="slds-form-element">
-    <!-- The label is drawn here and the combobox's own is hidden, so the required marker
-         reflects the selection rather than the always-empty combobox. -->
-    <template lwc:if={showLabel}>
-      <span class="slds-form-element__label">
-        <template lwc:if={required}>
-          <abbr class="slds-required" title="required">*</abbr>
-        </template>
-        {label}
-      </span>
-      <template lwc:if={hasHelp}>
-        <lightning-helptext
-          class="slds-form-element__icon"
-          content={fieldLevelHelp}
-        ></lightning-helptext>
+  <div class={formElementClass}>
+    <label class={labelClass} for="trigger">
+      <template lwc:if={required}>
+        <abbr class="slds-required" title="required">*</abbr>
       </template>
+      {label}
+    </label>
+    <template lwc:if={showHelp}>
+      <lightning-helptext
+        class="slds-form-element__icon"
+        content={fieldLevelHelp}
+      ></lightning-helptext>
     </template>
 
-    <lightning-combobox
-      label={label}
-      name={name}
-      variant="label-hidden"
-      placeholder={comboboxPlaceholder}
-      options={availableOptions}
-      value=""
-      disabled={comboboxDisabled}
-      dropdown-alignment="auto"
-      onchange={handleAdd}
-      onblur={handleBlur}
-    ></lightning-combobox>
+    <div class="slds-form-element__control">
+      <div class={comboboxClass}>
+        <div
+          class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+          role="none"
+        >
+          <!-- Read-only, so it never takes typing, and focus stays here the whole time the list
+               is open: options are picked with the mouse via mousedown-preventDefault, or with
+               the keyboard via aria-activedescendant. Losing focus is what closes the list. -->
+          <input
+            id="trigger"
+            type="text"
+            class="slds-input slds-combobox__input"
+            role="combobox"
+            readonly
+            autocomplete="off"
+            name={name}
+            value={triggerValue}
+            placeholder={placeholder}
+            disabled={triggerDisabled}
+            aria-haspopup="listbox"
+            aria-expanded={ariaExpanded}
+            aria-controls="listbox"
+            aria-activedescendant={activeOptionId}
+            aria-required={ariaRequired}
+            aria-invalid={ariaInvalid}
+            aria-describedby={describedBy}
+            onclick={handleTriggerClick}
+            onkeydown={handleTriggerKeydown}
+            onblur={handleTriggerBlur}
+          />
+          <span
+            class="slds-icon_container slds-input__icon slds-input__icon_right"
+          >
+            <lightning-icon
+              icon-name="utility:down"
+              size="x-small"
+              class="slds-icon-text-default"
+            ></lightning-icon>
+          </span>
+        </div>
+
+        <div
+          id="listbox"
+          class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+          role="listbox"
+          aria-label={label}
+          aria-multiselectable="true"
+          onmousedown={handleDropdownMouseDown}
+        >
+          <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+            <template for:each={listOptions} for:item="option">
+              <li key={option.value} role="presentation" class="slds-listbox__item">
+                <div
+                  id={option.id}
+                  class={option.className}
+                  role="option"
+                  aria-selected={option.ariaSelected}
+                  data-index={option.index}
+                  data-value={option.value}
+                  onclick={handleOptionClick}
+                >
+                  <span class="slds-media__figure slds-listbox__option-icon">
+                    <template lwc:if={option.selected}>
+                      <lightning-icon
+                        icon-name="utility:check"
+                        size="x-small"
+                        class="slds-current-color"
+                      ></lightning-icon>
+                    </template>
+                  </span>
+                  <span class="slds-media__body">
+                    <span class="slds-truncate" title={option.label}
+                      >{option.label}</span
+                    >
+                  </span>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <template lwc:if={hasError}>
+      <div class="slds-form-element__help" id="help-message">
+        {errorMessage}
+      </div>
+    </template>
 
     <template lwc:if={hasSelection}>
       <ul
         class="slds-listbox slds-listbox_horizontal slds-var-p-top_xx-small"
-        aria-label={label}
+        aria-label={selectionLabel}
       >
         <template for:each={selectedOptions} for:item="option">
           <li key={option.key} class="slds-listbox-item">

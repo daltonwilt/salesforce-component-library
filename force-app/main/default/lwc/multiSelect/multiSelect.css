@@ -1,0 +1,4 @@
+/* The input is read-only and opens the list on click, so it should look clickable. */
+.slds-combobox__input:not([disabled]) {
+  cursor: pointer;
+}
