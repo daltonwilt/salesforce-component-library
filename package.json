@@ -11,7 +11,6 @@
     "test:unit:watch": "sfdx-lwc-jest --watch",
     "test:unit:debug": "sfdx-lwc-jest --debug",
     "test:unit:coverage": "sfdx-lwc-jest --coverage",
-    "snippets": "node scripts/generate-library-snippets.js",
     "prepare": "husky || true",
     "precommit": "lint-staged"
   },
