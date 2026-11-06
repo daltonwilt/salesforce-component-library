@@ -26,18 +26,7 @@
         <name>Layout</name>
     </types>
     <types>
-        <members>componentLibrary</members>
-        <members>componentLibraryCode</members>
-        <members>componentLibraryExample</members>
         <members>datatable</members>
-        <members>exampleDatatable</members>
-        <members>exampleFileLoader</members>
-        <members>exampleForm</members>
-        <members>exampleMultiSelect</members>
-        <members>examplePaginator</members>
-        <members>exampleThumbnail</members>
-        <members>exampleTooltip</members>
-        <members>exampleUtils</members>
         <members>fileLoader</members>
         <members>form</members>
         <members>multiSelect</members>
